@@ -463,19 +463,22 @@ func (s *RPCServer) GetKeyBindings(args interface{}, resp *[]pluginsdk.KeyBindin
 	return nil
 }
 
-func (s *RPCServer) ExecuteCommand(args map[string]interface{}, resp *error) error {
+func (s *RPCServer) ExecuteCommand(args map[string]interface{}, resp *string) error {
 	name, _ := args["name"].(string)
 	argsSlice, _ := args["args"].([]interface{})
 
 	fmt.Printf("[RPC-Server] ExecuteCommand called: %s with args: %v\n", name, argsSlice)
 
 	if cmdPlugin, ok := s.Impl.(interface{ ExecuteCommand(string, ...interface{}) error }); ok {
-		*resp = cmdPlugin.ExecuteCommand(name, argsSlice...)
-		if *resp != nil {
-			fmt.Printf("[RPC-Server] ExecuteCommand failed: %v\n", *resp)
+			err := cmdPlugin.ExecuteCommand(name, argsSlice...)
+		if err != nil {
+			fmt.Printf("[RPC-Server] ExecuteCommand failed: %v\n", err)
+			*resp = err.Error()
+		} else {
+			*resp = ""
 		}
 	} else {
-		*resp = fmt.Errorf("plugin does not support command execution")
+			*resp = "plugin does not support command execution"
 	}
 	return nil
 }
