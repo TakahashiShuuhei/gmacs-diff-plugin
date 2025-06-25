@@ -81,10 +81,16 @@ func (p *BufferDiffPlugin) HandleBufferDiff(buffer1Name, buffer2Name string) err
 	}
 
 	fmt.Printf("[PLUGIN] HandleBufferDiff called with buffers: '%s' vs '%s'\n", buffer1Name, buffer2Name)
+	fmt.Printf("[PLUGIN] Host interface type: %T\n", p.host)
 
 	// Find both buffers
+	fmt.Printf("[PLUGIN] Searching for buffer1: '%s'\n", buffer1Name)
 	buffer1 := p.host.FindBuffer(buffer1Name)
+	fmt.Printf("[PLUGIN] Buffer1 result: %v\n", buffer1)
+	
+	fmt.Printf("[PLUGIN] Searching for buffer2: '%s'\n", buffer2Name)
 	buffer2 := p.host.FindBuffer(buffer2Name)
+	fmt.Printf("[PLUGIN] Buffer2 result: %v\n", buffer2)
 
 	if buffer1 == nil {
 		return fmt.Errorf("PLUGIN_MESSAGE:Buffer not found: %s", buffer1Name)
