@@ -3,7 +3,7 @@ module gmacs-diff-plugin
 go 1.22.2
 
 require (
-	github.com/TakahashiShuuhei/gmacs-plugin-sdk v0.0.0
+	github.com/TakahashiShuuhei/gmacs-plugin-sdk v0.2.0
 	github.com/hashicorp/go-plugin v1.6.0
 )
 
@@ -24,4 +24,4 @@ require (
 	google.golang.org/protobuf v1.31.0 // indirect
 )
 
-replace github.com/TakahashiShuuhei/gmacs-plugin-sdk => ../gmacs-plugin-sdk
+// replace github.com/TakahashiShuuhei/gmacs-plugin-sdk => ../gmacs-plugin-sdk

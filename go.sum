@@ -1,3 +1,5 @@
+github.com/TakahashiShuuhei/gmacs-plugin-sdk v0.2.0 h1:LvrkIGAJB1o9sfIv2oIli5BgbvjUwJsCEKgyN8NcN9I=
+github.com/TakahashiShuuhei/gmacs-plugin-sdk v0.2.0/go.mod h1:p6cY/tfNoZRmjGpZnSb9ka/2IF6MOlTF0pDIkwPC+os=
 github.com/bufbuild/protocompile v0.4.0 h1:LbFKd2XowZvQ/kajzguUp2DC9UEIQhIq77fZZlaQsNA=
 github.com/bufbuild/protocompile v0.4.0/go.mod h1:3v93+mbWn/v3xzN+31nwkJfrEpAUwp+BagBSZWx+TP8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
