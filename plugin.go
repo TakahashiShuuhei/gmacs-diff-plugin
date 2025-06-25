@@ -465,9 +465,15 @@ func (s *RPCServer) GetKeyBindings(args interface{}, resp *[]pluginsdk.KeyBindin
 
 func (s *RPCServer) ExecuteCommand(args map[string]interface{}, resp *string) error {
 	name, _ := args["name"].(string)
-	argsSlice, _ := args["args"].([]interface{})
+	argsStrings, _ := args["args"].([]string)
 
-	fmt.Printf("[RPC-Server] ExecuteCommand called: %s with args: %v\n", name, argsSlice)
+	fmt.Printf("[RPC-Server] ExecuteCommand called: %s with %d string args: %v\n", name, len(argsStrings), argsStrings)
+
+	// Convert string slice to []interface{}
+	argsSlice := make([]interface{}, len(argsStrings))
+	for i, arg := range argsStrings {
+		argsSlice[i] = arg
+	}
 
 	if cmdPlugin, ok := s.Impl.(interface{ ExecuteCommand(string, ...interface{}) error }); ok {
 			err := cmdPlugin.ExecuteCommand(name, argsSlice...)
